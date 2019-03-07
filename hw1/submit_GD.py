@@ -16,13 +16,13 @@ for i in range(18, sz, 18):
 	X = np.vstack((X, tmp))
 X = np.hstack((np.ones(X.shape[0]).reshape([X.shape[0], 1]), X))
 
-w = np.load(sys.argv[3])
+w = np.load("hw1.npy")
 
 y = X.dot(w)
 f = open(sys.argv[2], 'w')
 f.write('id,value\n')
 for i in range(y.shape[0]):
-	str_in = 'id_'+str(i)+','+str(max(float(y[i]), 0))+'\n' #normal
+	str_in = 'id_'+str(i)+','+str(float(y[i]))+'\n' #normal
 	#str_in = 'id_'+str(i)+','+str(max(round(float(y[i]), ), 0))+'\n' #use int
 	f.write(str_in)
 

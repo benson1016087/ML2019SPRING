@@ -38,19 +38,19 @@ lamda = 0
 #calculate E_in 
 def E_in():
 	err = Y - X.dot(w)
-	error = err.T.dot(err)
+	error = np.transpose(err).dot(err)
 	return (error / X.shape[0]) ** 0.5
 
 
 #training
 print('start training:\nlamda = ', lamda, ',eta = ', eta, ',iteration = ', iteration)
 for ti in range(iteration):
-	delta_w = -2 * X.T.dot(Y - X.dot(w)) + lamda * w
+	delta_w = -2 * np.transpose(X).dot(Y - X.dot(w)) + lamda * w
 	ada += delta_w ** 2
 	w = w - eta * delta_w / np.sqrt(ada)
 	if (ti+1)%1000 == 0:
 		error = E_in()
-		print(ti+1,'tiems done, E_in = ', error, "w_RMS", (np.dot(delta_w.T, delta_w) / delta_w.shape[0]) ** 0.5)
+		print(ti+1,'tiems done, E_in = ', error)
 
 np.save(sys.argv[2], w)
 print('end of train:\nlamda = ', lamda, ',eta = ', eta, ',iteration = ', iteration)
