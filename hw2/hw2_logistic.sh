@@ -1,0 +1,1 @@
+python submit_logi.py "$5" "$6" "logi.npy"
