@@ -1,0 +1,7 @@
+wget -O model2 "https://www.dropbox.com/s/38ntqplkwbcxa3j/model2_03292023?dl=0"
+wget -O model3 "https://www.dropbox.com/s/is34l99ztkg767r/model3_04021436?dl=0"
+wget -O model4 "https://www.dropbox.com/s/zbqhlrydtu6xv4l/model4_04031324?dl=0"
+wget -O model6 "https://www.dropbox.com/s/5lea28fevezbwlb/model6_04041957?dl=0"
+wget -O model7 "https://www.dropbox.com/s/al2qo0lsooc9ucv/model7_04042309?dl=0"
+echo "finish model downloading"
+python -u submit_blend.py "$1" "$2" "model2" "model3" "model4" "model6" "model7"
