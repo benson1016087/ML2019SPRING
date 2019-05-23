@@ -1,1 +1,1 @@
-python -u combined.py "$1" "auto_1" "$2" "$3"
+python -u combined.py "$1" "auto_3" "$2" "$3"
