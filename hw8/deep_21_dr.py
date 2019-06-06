@@ -28,29 +28,28 @@ Y_val = Y[-3000:, :]
 # building the CNN model 
 def building_convolution_model():
 	model = Sequential()
-	model.add(Conv2D(filters = 32, kernel_size = (3, 3), input_shape = (48, 48, 1), padding = 'same'))
+	model.add(Conv2D(filters = 14, kernel_size = (3, 3), input_shape = (48, 48, 1), padding = 'same'))
 	model.add(BatchNormalization())
-	model.add(DepthwiseConv2D(kernel_size = (3, 3), padding = 'same'))
-	model.add(Conv2D(filters = 32, kernel_size = (1, 1), padding = 'same'))
+	#model.add(DepthwiseConv2D(kernel_size = (3, 3), padding = 'same'))
+	model.add(Conv2D(filters = 14, kernel_size = (3, 3), padding = 'same'))
 	model.add(MaxPooling2D((2, 2)))
 	model.add(BatchNormalization())
 
-	model.add(DepthwiseConv2D(kernel_size = (3, 3), padding = 'same'))
-	model.add(Conv2D(filters = 64, kernel_size = (1, 1), padding = 'same'))
+	#model.add(DepthwiseConv2D(kernel_size = (3, 3), padding = 'same'))
+	model.add(Conv2D(filters = 28, kernel_size = (3, 3), padding = 'same'))
 	model.add(BatchNormalization())
-	model.add(DepthwiseConv2D(kernel_size = (3, 3), padding = 'same'))
-	model.add(Conv2D(filters = 64, kernel_size = (1, 1), padding = 'same'))
+	#model.add(DepthwiseConv2D(kernel_size = (3, 3), padding = 'same'))
+	model.add(Conv2D(filters = 28, kernel_size = (3, 3), padding = 'same'))
 	model.add(LeakyReLU())
 	model.add(MaxPooling2D((2, 2)))
 	model.add(BatchNormalization())
 	model.add(Dropout(0.1))
 
-	model.add(DepthwiseConv2D(kernel_size = (3, 3), padding = 'same'))
-	model.add(Conv2D(filters = 128, kernel_size = (1, 1), padding = 'same'))
+	#model.add(DepthwiseConv2D(kernel_size = (3, 3), padding = 'same'))
+	model.add(Conv2D(filters = 56, kernel_size = (3, 3), padding = 'same'))
 	model.add(LeakyReLU())
 	model.add(BatchNormalization())
-	model.add(DepthwiseConv2D(kernel_size = (3, 3), padding = 'same'))
-	model.add(Conv2D(filters = 128, kernel_size = (1, 1), padding = 'same'))
+	model.add(Conv2D(filters = 56, kernel_size = (3, 3), padding = 'same'))
 	model.add(LeakyReLU())
 	model.add(MaxPooling2D((2, 2)))
 	model.add(BatchNormalization())
@@ -71,6 +70,7 @@ img_generator = ImageDataGenerator(rotation_range = 25, horizontal_flip = True, 
 model = building_convolution_model()
 model = fully_connected_model(model)
 print(model.summary())
+
 
 model.compile(loss = 'categorical_crossentropy', optimizer = 'adam', metrics=['accuracy'])
 
